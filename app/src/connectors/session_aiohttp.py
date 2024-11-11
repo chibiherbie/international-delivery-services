@@ -3,7 +3,7 @@ import aiohttp
 
 
 class HTTPSession:
-    _session: Optional[aiohttp.ClientSession] = None
+    session: Optional[aiohttp.ClientSession] = None
 
     def start(self):
         self.session = aiohttp.ClientSession()

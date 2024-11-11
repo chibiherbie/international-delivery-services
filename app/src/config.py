@@ -22,7 +22,7 @@ class Settings(BaseSettings):
 
     @property
     def DB_URL(self):  # noqa
-        return f'postgresql+asyncpg://{self.DB_USER}:{self.DB_PASS}@db:{self.DB_PORT}/{self.DB_NAME}'
+        return f'mysql+aiomysql://{self.DB_USER}:{self.DB_PASS}@db:{self.DB_PORT}/{self.DB_NAME}'
 
     model_config = SettingsConfigDict(env_file="../.env")
 

@@ -23,14 +23,14 @@ def upgrade() -> None:
     op.create_table(
         "package_type",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("name", sa.String(), nullable=False),
+        sa.Column("name", sa.String(length=255), nullable=False),
         sa.PrimaryKeyConstraint("id"),
     )
     op.create_table(
         "package",
         sa.Column("id", sa.Integer(), nullable=False),
-        sa.Column("name", sa.String(), nullable=False),
-        sa.Column("session_id", sa.String(), nullable=False),
+        sa.Column("name", sa.String(length=255), nullable=False),
+        sa.Column("session_id", sa.String(length=255), nullable=False),
         sa.Column("weight", sa.Float(), nullable=False),
         sa.Column("cost_in_usd", sa.Numeric(), nullable=False),
         sa.Column("delivery_cost", sa.Numeric(), nullable=True),

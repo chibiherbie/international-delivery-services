@@ -1,0 +1,7 @@
+services:
+  app:
+    environment:
+      - DEBUG=True
+      - WATCHFILES_FORCE_POLLING=True
+    volumes:
+      - ./app/src:/app/src

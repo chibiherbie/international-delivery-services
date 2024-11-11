@@ -14,7 +14,7 @@ from src.tasks.scheduler import scheduler
 from src.config import settings
 from src.init import redis_manager, session
 from src.api.packages import router as router_package
-from src.api.debug import router as router_debug
+from src.api.tasks import router as router_tasks
 
 
 @asynccontextmanager
@@ -24,13 +24,14 @@ async def lifespan(app: FastAPI):
     session.start()
     scheduler.start()
     yield
-    session.stop()
+    await session.stop()
     await redis_manager.close()
+
 
 app = FastAPI(lifespan=lifespan)
 
 app.include_router(router_package)
-app.include_router(router_debug)
+app.include_router(router_tasks)
 app.add_middleware(SessionMiddleware, secret_key=settings.SECRET_KEY)
 
 
